@@ -5,11 +5,39 @@
 <h1>Title: {{ book.title }}</h1>
 
 <p><strong>Author:</strong> <a href="{% url 'author-detail' book.author.pk %}">{{ book.author }}</a></p>
-<p><strong>Summary:</strong> {{ book.summary }}</p>
+<p><strong>Summary:</strong><p id="myLinkText">{{ book.summary }}</p>
 <p><strong>ISBN:</strong> {{ book.isbn }}</p> 
 <p><strong>Language:</strong> {{ book.language }}</p>  
 <p><strong>Genre:</strong> {{ book.genre.all|join:", " }}</p>
 
+<script>
+
+document.getElementById("myLinkText").innerHTML = myLinkTextFunction('{{ book.summary }}');
+            
+          function myLinkTextFunction(textIn) {
+              txt=''; // txt is global because didn't use var
+                      // replace any <p> or </p> tags with empty string ''
+              var temptextIn = textIn.replace('</p>', '');
+              textIn = temptextIn;
+              temptextIn = textIn.replace(/<p>/g, '');
+              
+              textIn = temptextIn.replace('  ', ' '); // replace double spaces with a single space
+                     // parse into an array[word], separated at spaces.
+              var inputText = textIn.split(' ');
+  
+              inputText.forEach(myFunction);
+          return txt;
+          }         // end of myLinkTextFunction
+
+        function myFunction(word) {
+         if (0==word.indexOf('http')){
+          txt = txt + ' ' + '<a href= "'+word+' '+'">'+word+'</a>';
+         } else {txt = txt + ' '+word;
+           }
+        }           // end of myFunction
+                        
+
+</script> 
 <div style="margin-left:20px;margin-top:20px">
 <h4>Copies</h4>
 
@@ -23,4 +51,3 @@
 {% endfor %}
 </div>
 {% endblock %}
-

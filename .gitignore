@@ -60,6 +60,10 @@ coverage.xml
 *.log
 local_settings.py
 
+# Static files, output from collectstatic
+
+staticfiles/
+
 # Flask stuff:
 instance/
 .webassets-cache
