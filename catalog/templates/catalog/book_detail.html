@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<h1>Title: {{ book.title }}</h1>
+<h1>Movie: {{ book.title }}</h1>
 
-<p><strong>Author:</strong> <a href="{% url 'author-detail' book.author.pk %}">{{ book.author }}</a></p>
+<p><strong>Star:</strong> <a href="{% url 'author-detail' book.author.pk %}">{{ book.author }}</a></p>
 <p><strong>Summary:</strong><p id="myLinkText">{{ book.summary }}</p>
 <p><strong>ISBN:</strong> {{ book.isbn }}</p> 
 <p><strong>Language:</strong> {{ book.language }}</p>  

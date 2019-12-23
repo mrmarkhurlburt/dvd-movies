@@ -34,6 +34,11 @@ ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    # My Apps
+
+    # Third party apps.
+    'bootstrap4',
+    # Default django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
