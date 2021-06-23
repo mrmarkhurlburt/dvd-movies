@@ -1,0 +1,3 @@
+# robots, we don't serve your kind here. Stay out!
+User-agent: *
+Disallow: /

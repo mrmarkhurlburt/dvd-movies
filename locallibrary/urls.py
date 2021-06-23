@@ -15,14 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# add for robots.tx
+from django.views.generic.base import TemplateView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
-
-
-from django.urls import path
-from django.contrib import admin
 
 # Use include() to add URLS from the catalog application and authentication system
 from django.urls import include
@@ -57,4 +56,13 @@ urlpatterns += [
 #Add Django site authentication urls (for login, logout, password management)
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
+]
+
+# Add robots.txt
+urlpatterns += [
+    # ...
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+    ),
 ]
